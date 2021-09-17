@@ -10,8 +10,14 @@ public class WebDriverSettings {
 
     @Before
     public void setUp(){
-        System.setProperty("webdriver.chrome.driver", "./chromedriver.exe");
-        driver=new ChromeDriver();
+        String driverPath = ".//chromedriver";
+
+        if(System.getProperty("os.name").toLowerCase().contains("windows")){
+            driverPath += ".exe";
+        }
+        System.setProperty("webdriver.chrome.driver", driverPath);
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
     }
 
     @After
