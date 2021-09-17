@@ -10,7 +10,7 @@ public class WebDriverSettings {
 
     @Before
     public void setUp(){
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\ivakhnenko.k\\Downloads\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "./chromedriver.exe");
         driver=new ChromeDriver();
     }
 
