@@ -17,18 +17,18 @@ public class WebDriverSettings {
 
         if (System.getProperty("os.name").toLowerCase().contains("mac os x")) {
             Runtime.getRuntime().exec("chmod 755 " + ".//chromedriver");
-            }
-
-        if(System.getProperty("os.name").toLowerCase().contains("windows")){
-            System.setProperty("webdriver.chrome.driver", ".//chromedriver.exe");
-
-            driver = new ChromeDriver();
-            driver.manage().window().maximize();
         }
+        if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+            System.setProperty("webdriver.chrome.driver", ".//chromedriver.exe");
+        } else {
+            System.setProperty("webdriver.chrome.driver", ".//chromedriver");
+        }
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
     }
 
     @AfterClass
-    public static void close(){
+    public static void close() {
         driver.quit();
     }
 }
