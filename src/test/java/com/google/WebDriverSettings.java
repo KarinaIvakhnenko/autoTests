@@ -4,6 +4,7 @@ import org.junit.BeforeClass;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 public class WebDriverSettings {
     public static ChromeDriver driver;
@@ -21,6 +22,7 @@ public class WebDriverSettings {
             System.setProperty("webdriver.chrome.driver", ".//chromedriver");
         }
         driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
 
