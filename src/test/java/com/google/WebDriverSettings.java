@@ -1,29 +1,43 @@
 package com.google;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class WebDriverSettings {
     public static ChromeDriver driver;
-    public String value;
 
     @BeforeClass
-    public static void setUp() throws IOException {
+    public static void setUpClass() {
 
-        if (System.getProperty("os.name").toLowerCase().contains("mac os x")) {
-            Runtime.getRuntime().exec("chmod 755 " + ".//chromedriver");
-        }
-        if (System.getProperty("os.name").toLowerCase().contains("windows")) {
-            System.setProperty("webdriver.chrome.driver", ".//chromedriver.exe");
-        } else {
-            System.setProperty("webdriver.chrome.driver", ".//chromedriver");
-        }
-        driver = new ChromeDriver();
+//        if (System.getProperty("os.name").toLowerCase().contains("mac os x")) {
+//            Runtime.getRuntime().exec("chmod 755 " + ".//chromedriver");
+//        }
+//        if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+//            System.setProperty("webdriver.chrome.driver", ".//chromedriver.exe");
+//        } else {
+//            System.setProperty("webdriver.chrome.driver", ".//chromedriver");
+//        }
+        WebDriverManager.chromedriver()
+                .version("93.0.4577.63")
+                .setup();
+
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("start-maximized");
+        options.addArguments("enable-automation");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-infobars");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-browser-side-navigation");
+        options.addArguments("--disable-gpu");
+
+        driver = new ChromeDriver(options);
+
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
+//        driver.manage().window().maximize();
     }
 
     @AfterClass
