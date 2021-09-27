@@ -1,4 +1,5 @@
-package com.google;
+package com.webdriveruniversity.resources;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -33,5 +34,4 @@ public class WebDriverSettings {
     @AfterClass
     public static void close() {
         driver.quit();
-    }
-}
+    }}
