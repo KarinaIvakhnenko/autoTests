@@ -12,15 +12,6 @@ public class WebDriverSettings {
 
     @BeforeClass
     public static void setUpClass() {
-
-//        if (System.getProperty("os.name").toLowerCase().contains("mac os x")) {
-//            Runtime.getRuntime().exec("chmod 755 " + ".//chromedriver");
-//        }
-//        if (System.getProperty("os.name").toLowerCase().contains("windows")) {
-//            System.setProperty("webdriver.chrome.driver", ".//chromedriver.exe");
-//        } else {
-//            System.setProperty("webdriver.chrome.driver", ".//chromedriver");
-//        }
         WebDriverManager.chromedriver()
                 .version("93.0.4577.63")
                 .setup();
@@ -37,7 +28,6 @@ public class WebDriverSettings {
         driver = new ChromeDriver(options);
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//        driver.manage().window().maximize();
     }
 
     @AfterClass
