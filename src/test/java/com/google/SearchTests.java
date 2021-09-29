@@ -5,14 +5,16 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import resources.WebDriverSettings;
 
-public class FirstTest extends WebDriverSettings {
 
-    public static final String HTTP_WWW_GOOGLE_COM = "http://www.google.com/";
+public class SearchTests extends WebDriverSettings {
+
+    public static final String mainGooglePage = "http://www.google.com/";
 
     @Before
     public void setUp() {
-        driver.get(HTTP_WWW_GOOGLE_COM);
+        driver.get(mainGooglePage);
     }
 
     @Test
@@ -30,20 +32,24 @@ public class FirstTest extends WebDriverSettings {
     }
 
     @Test
-    public void testButtonIsClickable() {
-        driver.findElement(By.xpath("/html/body/div[1]/div[3]/form/div[1]/div[1]/div[3]/center/input[1]")).click();
+    public void testClickOnSearchButton() {
+        driver.findElement(By.name("q")).sendKeys("allo.ua");
+        driver.findElement(By.xpath("//div[@class='FPdoLc lJ9FBc']//input[@name='btnK']")).click();
+
+        String currentLink = driver.getCurrentUrl();
+        Assert.assertTrue(currentLink.contains("q=allo.ua"));
     }
 
     @Test
     public void testLinkIsDisplayed() {
-        driver.findElement(By.name("q")).sendKeys("allo" + Keys.ENTER);
-        driver.findElement(By.xpath("//a/h3[text()='Алло']"));
+        driver.findElement(By.name("q")).sendKeys("allo.ua" + Keys.ENTER);
+        driver.findElement(By.xpath("//div[@class='yuRUbf']//a[@href='https://allo.ua/']")).isDisplayed();
     }
 
     @Test
     public void testSiteCanBeOpened() {
         driver.findElement(By.name("q")).sendKeys("allo" + Keys.ENTER);
-        driver.findElement(By.xpath("//a/h3[text()='Алло']")).click();
+        driver.findElement(By.xpath("//div[@class='yuRUbf']//a[@href='https://allo.ua/']")).click();
         String link = driver.getCurrentUrl();
         Assert.assertEquals("https://allo.ua/", link);
     }

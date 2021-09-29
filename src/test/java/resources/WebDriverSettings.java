@@ -1,4 +1,5 @@
-package com.google;
+package resources;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
