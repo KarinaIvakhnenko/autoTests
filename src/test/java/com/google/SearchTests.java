@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import resources.WebDriverSettings;
 
 
@@ -43,7 +44,8 @@ public class SearchTests extends WebDriverSettings {
     @Test
     public void testLinkIsDisplayed() {
         driver.findElement(By.name("q")).sendKeys("allo.ua" + Keys.ENTER);
-        driver.findElement(By.xpath("//div[@class='yuRUbf']//a[@href='https://allo.ua/']")).isDisplayed();
+        WebElement linkAllo = driver.findElement(By.xpath("//div[@class='yuRUbf']//a[@href='https://allo.ua/']"));
+        Assert.assertTrue(linkAllo.isDisplayed());
     }
 
     @Test
