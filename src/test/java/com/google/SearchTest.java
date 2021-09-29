@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import resources.WebDriverSettings;
 
 
-public class SearchTests extends WebDriverSettings {
+public class SearchTest extends WebDriverSettings {
 
     public static final String mainGooglePage = "http://www.google.com/";
 
