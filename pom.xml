@@ -16,6 +16,7 @@
 
     <modules>
         <module>googletests</module>
+        <module>webdriveruniversity</module>
     </modules>
 
 </project>
