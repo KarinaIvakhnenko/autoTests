@@ -27,16 +27,24 @@ public class SearchTest extends WebDriverSettings {
 
     @Test
     public void testInputInSearchBox() {
-        driver.findElement(By.name("q")).sendKeys("allo.ua");
-        String qElementValue = driver.findElement(By.name("q")).getAttribute("value");
+        WebElement searchButton = driver.findElement(By.name("q"));
+        assertNotNull(searchButton);
+        searchButton.sendKeys("allo.ua");
+        searchButton = driver.findElement(By.name("q"));
+        assertNotNull(searchButton);
+        String qElementValue = searchButton.getAttribute("value");
         assertEquals("allo.ua", qElementValue);
 
     }
 
     @Test
     public void testClickOnSearchButton() {
-        driver.findElement(By.name("q")).sendKeys("allo.ua");
-        driver.findElement(By.xpath("//div[@class='FPdoLc lJ9FBc']//input[@name='btnK']")).click();
+        WebElement searchField = driver.findElement(By.name("q"));
+        assertNotNull(searchField);
+        searchField.sendKeys("allo.ua");
+        WebElement searchButton = driver.findElement(By.xpath("//div[@class='FPdoLc lJ9FBc']//input[@name='btnK']"));
+        assertNotNull(searchButton);
+        searchButton.click();
 
         String currentLink = driver.getCurrentUrl();
         assertTrue(currentLink.contains("q=allo.ua"));
@@ -44,15 +52,22 @@ public class SearchTest extends WebDriverSettings {
 
     @Test
     public void testLinkIsDisplayed() {
-        driver.findElement(By.name("q")).sendKeys("allo.ua" + Keys.ENTER);
+        WebElement searchField = driver.findElement(By.name("q"));
+        assertNotNull(searchField);
+        searchField.sendKeys("allo.ua" + Keys.ENTER);
         WebElement linkAllo = driver.findElement(By.xpath("//div[@class='yuRUbf']//a[@href='https://allo.ua/']"));
+        assertNotNull(linkAllo);
         assertTrue(linkAllo.isDisplayed());
     }
 
     @Test
     public void testSiteCanBeOpened() {
-        driver.findElement(By.name("q")).sendKeys("allo" + Keys.ENTER);
-        driver.findElement(By.xpath("//div[@class='yuRUbf']//a[@href='https://allo.ua/']")).click();
+        WebElement searchField = driver.findElement(By.name("q"));
+        assertNotNull(searchField);
+        searchField.sendKeys("allo" + Keys.ENTER);
+        WebElement linkAllo = driver.findElement(By.xpath("//div[@class='yuRUbf']//a[@href='https://allo.ua/']"));
+        assertNotNull(linkAllo);
+        linkAllo.click();
         String link = driver.getCurrentUrl();
         assertEquals("https://allo.ua/", link);
     }
