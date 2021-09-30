@@ -1,11 +1,11 @@
 package com.webdriveruniversity.pages.main;
 
-import com.webdriveruniversity.resources.WebDriverSettings;
+import com.tools.WebDriverSettings;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import com.webdriveruniversity.resources.SwitchTabs;
+import com.tools.SwitchTabs;
 
 
 public class ElementsAreDisplayedTest extends WebDriverSettings {

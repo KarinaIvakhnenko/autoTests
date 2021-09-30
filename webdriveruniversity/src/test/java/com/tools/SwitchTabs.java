@@ -1,9 +1,4 @@
-package com.webdriveruniversity.resources;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.devtools.idealized.Javascript;
+package com.tools;
 
 import java.util.Set;
 
